@@ -246,15 +246,15 @@ function VisualWall({
   return (
     <div className="mt-12">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-purple-900">{leftLabel}</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-violet-400">{leftLabel}</p>
         <p className="text-lg text-slate-500">Hover for spotlight. Click to open the frame.</p>
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-900">{rightLabel}</p>
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">{rightLabel}</p>
       </div>
 
       <div className={cx('relative mt-5 hidden md:block', boardClass)}>
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-6 bottom-0 rounded-[2rem] bg-gradient-to-r from-purple-50 via-white to-slate-50"
+          className="pointer-events-none absolute inset-x-0 top-6 bottom-0 rounded-[2rem] bg-gradient-to-r from-violet-950/40 via-[#12161f] to-slate-900/60"
         />
         {pieces.map((piece) => {
           const selected = piece.id === activeId
@@ -490,16 +490,16 @@ export function ReachVisuals() {
   }
 
   const groups = [
-    { id: 'impressions', label: 'Impressions', pieces: impressionPieces, panel: 'bg-slate-50' },
-    { id: 'engagements', label: 'Engagements', pieces: engagementPieces, panel: 'bg-purple-50' },
+    { id: 'impressions', label: 'Impressions', pieces: impressionPieces, panel: 'bg-slate-900/70' },
+    { id: 'engagements', label: 'Engagements', pieces: engagementPieces, panel: 'bg-violet-950/40' },
   ]
 
   return (
     <div className="relative mt-12">
       <div className="grid items-start gap-6 lg:grid-cols-2">
         {groups.map((group) => (
-          <section key={group.id} className={cx('rounded-[2rem] p-4 sm:p-6', group.panel)}>
-            <h4 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">{group.label}</h4>
+          <section key={group.id} className={cx('rounded-[2rem] p-4 sm:p-6 ring-1 ring-white/10', group.panel)}>
+            <h4 className="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">{group.label}</h4>
             <div className="mt-4 hidden gap-4 md:grid">
               {group.pieces.map((piece) => {
                 const hovered = hoveredId === piece.id
@@ -710,15 +710,15 @@ export function HadiReachVisuals() {
 
   return (
     <div className="mt-8">
-      <p className="max-w-4xl text-xl leading-relaxed text-slate-800 sm:text-2xl">
-        These numbers were reached with a total ad spend of <span className="font-semibold text-emerald-900">Rs. 0</span>.
+      <p className="max-w-4xl text-xl leading-relaxed text-slate-300 sm:text-2xl">
+        These numbers were reached with a total ad spend of <span className="font-semibold text-emerald-400">Rs. 0</span>.
         Hadi is a funded NGO that was short on funds, and the growth was scaled organically through the channels below.
       </p>
       <ul className="mt-6 flex flex-wrap gap-3">
         {hadiChannels.map((channel) => (
           <li
             key={channel}
-            className="rounded-full bg-emerald-900 px-4 py-2 text-sm font-semibold text-white sm:text-base"
+            className="rounded-full bg-emerald-950 px-4 py-2 text-sm font-semibold text-emerald-100 sm:text-base"
           >
             {channel}
           </li>
@@ -776,7 +776,7 @@ function Lightbox({
       {active && (
         <motion.div
           className={cx(
-            'z-40 flex items-center justify-center bg-white/82 p-4 backdrop-blur-sm sm:p-8',
+            'z-40 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8',
             fixed ? 'fixed inset-0' : 'absolute inset-0 rounded-[2rem]',
           )}
           initial={{ opacity: 0 }}
@@ -797,9 +797,9 @@ function Lightbox({
             <img
               src={active.src}
               alt=""
-              className="mx-auto max-h-[70vh] w-full rounded-[1.5rem] object-contain shadow-[0_24px_60px_rgba(15,23,42,0.2)]"
+              className="mx-auto max-h-[70vh] w-full rounded-[1.5rem] object-contain shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
             />
-            <figcaption className="mt-4 flex flex-wrap items-center justify-center gap-3 text-center text-lg text-slate-700">
+            <figcaption className="mt-4 flex flex-wrap items-center justify-center gap-3 text-center text-lg text-slate-300">
               <span
                 className={cx(
                   'rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white',
@@ -815,7 +815,7 @@ function Lightbox({
                 type="button"
                 onClick={() => onStep(-1)}
                 disabled={activeIndex <= 0}
-                className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-slate-200 bg-white text-slate-900 disabled:cursor-default disabled:opacity-40"
+                className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-white/15 bg-white/10 text-slate-100 disabled:cursor-default disabled:opacity-40"
                 aria-label="Previous frame"
               >
                 <ChevronLeft className="h-5 w-5" aria-hidden="true" />
@@ -823,7 +823,7 @@ function Lightbox({
               <button
                 type="button"
                 onClick={onClose}
-                className="cursor-pointer rounded-full px-4 py-2 text-base font-semibold text-purple-900"
+                className="cursor-pointer rounded-full px-4 py-2 text-base font-semibold text-violet-300"
               >
                 Back to the wall
               </button>
@@ -831,7 +831,7 @@ function Lightbox({
                 type="button"
                 onClick={() => onStep(1)}
                 disabled={activeIndex >= total - 1}
-                className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-slate-200 bg-white text-slate-900 disabled:cursor-default disabled:opacity-40"
+                className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-white/15 bg-white/10 text-slate-100 disabled:cursor-default disabled:opacity-40"
                 aria-label="Next frame"
               >
                 <ChevronRight className="h-5 w-5" aria-hidden="true" />

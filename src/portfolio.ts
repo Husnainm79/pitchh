@@ -10,6 +10,9 @@ export interface Brand {
   showcaseTitle: string
   tone: 'purple' | 'green'
   logo?: string
+  coverImage?: string
+  coverSide?: 'left' | 'right'
+  coverPosition?: string
 }
 
 export const brands: Brand[] = [
@@ -23,6 +26,9 @@ export const brands: Brand[] = [
     showcaseTitle: 'Inspired Analyst Showcase',
     tone: 'purple',
     logo: '/inspired-analyst-logo.jpg',
+    coverImage: '/inspired/poster.png',
+    coverSide: 'right',
+    coverPosition: '62% center',
   },
   {
     id: 'hadi-elearning',
@@ -34,6 +40,9 @@ export const brands: Brand[] = [
     showcaseTitle: 'Hadi E-learning Showcase',
     tone: 'green',
     logo: '/hadi-elearning-logo.jpg',
+    coverImage: '/hadi/video-hassan.jpg',
+    coverSide: 'right',
+    coverPosition: 'center top',
   },
 ]
 
